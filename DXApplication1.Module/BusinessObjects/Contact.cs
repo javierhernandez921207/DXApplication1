@@ -1,11 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using DevExpress.Persistent.Base;
 using DevExpress.Persistent.BaseImpl;
-using DevExpress.Persistent.Validation;
 using DevExpress.Xpo;
 
 namespace DXApplication1.Module.BusinessObjects
@@ -63,6 +58,15 @@ namespace DXApplication1.Module.BusinessObjects
         {
             get { return position; }
             set { SetPropertyValue(nameof(Position), ref position, value); }
+        }
+
+        [Association("Contact-DemoTask")]
+        public XPCollection<DemoTask> Tasks
+        {
+            get
+            {
+                return GetCollection<DemoTask>(nameof(Tasks));
+            }
         }
 
     }
