@@ -1,6 +1,7 @@
 ﻿using System;
 using DevExpress.Persistent.Base;
 using DevExpress.Persistent.BaseImpl;
+using DevExpress.Persistent.Validation;
 using DevExpress.Xpo;
 
 namespace DXApplication1.Module.BusinessObjects
@@ -39,6 +40,16 @@ namespace DXApplication1.Module.BusinessObjects
             get { return anniversary; }
             set { SetPropertyValue(nameof(Anniversary), ref anniversary, value); }
         }
+
+        private string email;
+        [RuleRegularExpression("RuleRegularExpression", DefaultContexts.Save,
+            @"^([\w-\.]+)@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.)|(([\w-]+\.)+))([a-zA-Z]{2,4}|[0-9]{1,3})(\]?)$")]
+        public new string Email
+        {
+            get { return email; }
+            set { SetPropertyValue(nameof(Email), ref email, value); }
+        }
+
         private string notes;
         [Size(4096)]
         public string Notes
@@ -90,12 +101,14 @@ namespace DXApplication1.Module.BusinessObjects
     {
         public Department(Session session) : base(session) { }
         private string title;
+        [RuleRequiredField(DefaultContexts.Save)]
         public string Title
         {
             get { return title; }
             set { SetPropertyValue(nameof(Title), ref title, value); }
         }
         private string office;
+        [RuleRequiredField(DefaultContexts.Save)]
         public string Office
         {
             get { return office; }
@@ -118,6 +131,8 @@ namespace DXApplication1.Module.BusinessObjects
     {
         public Position(Session session) : base(session) { }
         private string title;
+        [RuleRequiredField(DefaultContexts.Save)]
+        [RuleStringComparison("", DefaultContexts.Save, StringComparisonType.StartsWith, "Pos", IgnoreCase = true)]
         public string Title
         {
             get { return title; }
