@@ -109,6 +109,12 @@
     <Compile Include="DatabaseUpdate\Updater.cs" />
     <Compile Include="BusinessObjects\ApplicationUser.cs" />
     <Compile Include="BusinessObjects\ApplicationUserLoginInfo.cs" />
+    <Compile Include="FindBySubjectController.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="FindBySubjectController.Designer.cs">
+      <DependentUpon>FindBySubjectController.cs</DependentUpon>
+    </Compile>
     <Compile Include="Module.cs">
       <SubType>Component</SubType>
     </Compile>
