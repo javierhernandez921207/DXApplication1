@@ -23,6 +23,7 @@ namespace DXApplication1.Module {
     public sealed partial class DXApplication1Module : ModuleBase {
         public DXApplication1Module() {
             InitializeComponent();
+            AdditionalExportedTypes.Add(typeof(Note));
         }
         public override IEnumerable<ModuleUpdater> GetModuleUpdaters(IObjectSpace objectSpace, Version versionFromDB) {
             ModuleUpdater updater = new DatabaseUpdate.Updater(objectSpace, versionFromDB);

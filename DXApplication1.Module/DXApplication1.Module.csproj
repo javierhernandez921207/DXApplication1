@@ -100,19 +100,19 @@
   <ItemGroup>
     <Compile Include="BusinessObjects\Contact.cs" />
     <Compile Include="BusinessObjects\Task.cs" />
-    <Compile Include="ClearContactTasksController.cs">
+    <Compile Include="Controllers\ClearContactTasksController.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="ClearContactTasksController.Designer.cs">
+    <Compile Include="Controllers\ClearContactTasksController.Designer.cs">
       <DependentUpon>ClearContactTasksController.cs</DependentUpon>
     </Compile>
     <Compile Include="DatabaseUpdate\Updater.cs" />
     <Compile Include="BusinessObjects\ApplicationUser.cs" />
     <Compile Include="BusinessObjects\ApplicationUserLoginInfo.cs" />
-    <Compile Include="FindBySubjectController.cs">
+    <Compile Include="Controllers\FindBySubjectController.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="FindBySubjectController.Designer.cs">
+    <Compile Include="Controllers\FindBySubjectController.Designer.cs">
       <DependentUpon>FindBySubjectController.cs</DependentUpon>
     </Compile>
     <Compile Include="Module.cs">
@@ -120,6 +120,12 @@
     </Compile>
     <Compile Include="Module.Designer.cs">
       <DependentUpon>Module.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Controllers\PopupNotesController.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Controllers\PopupNotesController.Designer.cs">
+      <DependentUpon>PopupNotesController.cs</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
