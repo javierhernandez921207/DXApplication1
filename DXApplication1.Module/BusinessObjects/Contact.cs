@@ -47,7 +47,9 @@ namespace DXApplication1.Module.BusinessObjects
             set { SetPropertyValue(nameof(Notes), ref notes, value); }
         }
 
+        //One to Many
         private Department department;
+        [Association("Department-Contacts")]
         public Department Department
         {
             get { return department; }
@@ -60,6 +62,7 @@ namespace DXApplication1.Module.BusinessObjects
             set { SetPropertyValue(nameof(Position), ref position, value); }
         }
 
+        //Many to Many
         [Association("Contact-DemoTask")]
         public XPCollection<DemoTask> Tasks
         {
@@ -68,7 +71,6 @@ namespace DXApplication1.Module.BusinessObjects
                 return GetCollection<DemoTask>(nameof(Tasks));
             }
         }
-
     }
     public enum TitleOfCourtesy { Dr, Miss, Mr, Mrs, Ms };
 
@@ -89,6 +91,16 @@ namespace DXApplication1.Module.BusinessObjects
             get { return office; }
             set { SetPropertyValue(nameof(Office), ref office, value); }
         }
+       
+        [Association("Department-Contacts")]
+        public XPCollection<Contact> Contacts
+        {
+            get
+            {
+                return GetCollection<Contact>(nameof(Contacts));
+            }
+        }
+
     }
     [DefaultClassOptions]
     [System.ComponentModel.DefaultProperty(nameof(Title))]
