@@ -71,6 +71,16 @@ namespace DXApplication1.Module.BusinessObjects
                 return GetCollection<DemoTask>(nameof(Tasks));
             }
         }
+
+        private Contact manager;
+
+        [DataSourceProperty("Department.Contacts", DataSourcePropertyIsNullMode.SelectAll)]
+        [DataSourceCriteria("Position.Title = 'Pos1' AND Oid != '@This.Oid'")]
+        public Contact Manager
+        {
+            get { return manager; }
+            set { SetPropertyValue(nameof(Manager), ref manager, value); }
+        }
     }
     public enum TitleOfCourtesy { Dr, Miss, Mr, Mrs, Ms };
 
