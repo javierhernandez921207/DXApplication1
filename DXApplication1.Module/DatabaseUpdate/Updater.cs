@@ -22,7 +22,17 @@ namespace DXApplication1.Module.DatabaseUpdate {
         public override void UpdateDatabaseAfterUpdateSchema() {
             base.UpdateDatabaseAfterUpdateSchema();
 
-
+            Contact contactMary = ObjectSpace.FirstOrDefault<Contact>(contact => contact.FirstName == "Mary" && contact.LastName == "Tellitson");
+            if (contactMary == null)
+            {
+                contactMary = ObjectSpace.CreateObject<Contact>();
+                contactMary.FirstName = "Mary";
+                contactMary.LastName = "Tellitson";
+                contactMary.Email = "tellitson@example.com";
+                contactMary.Birthday = new DateTime(1980, 11, 27);
+            }
+            //...
+            ObjectSpace.CommitChanges();
 
             //string name = "MyName";
             //DomainObject1 theObject = ObjectSpace.FirstOrDefault<DomainObject1>(u => u.Name == name);
